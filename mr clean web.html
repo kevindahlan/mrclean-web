@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Clean Laundry - Bersih, Wangi, Rapi!</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom colors and font family - Adjusted to match logo more closely */
+        :root {
+            --color-dark-blue: #003366; /* Slightly darker blue, richer */
+            --color-bright-yellow: #FFC300; /* Richer yellow */
+            --color-light-bg: #f0f5f9; /* Softer light background */
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-light-bg);
+        }
+        .bg-dark-blue {
+            background-color: var(--color-dark-blue);
+        }
+        .text-dark-blue {
+            color: var(--color-dark-blue);
+        }
+        .bg-bright-yellow {
+            background-color: var(--color-bright-yellow);
+        }
+        .text-bright-yellow {
+            color: var(--color-bright-yellow);
+        }
+        .btn-primary {
+            @apply bg-bright-yellow text-dark-blue font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
+        }
+        .btn-secondary {
+            @apply bg-dark-blue text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
+        }
+        /* Enhanced animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        /* Testimonial carousel styles */
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-item {
+            flex: 0 0 100%; /* Each item takes full width */
+        }
+        /* Parallax effect for hero image */
+        .hero-image-parallax {
+            background-image: url('https://placehold.co/600x400/003366/FFC300?text=Mesin+Cuci+%2B+Pakaian+Wangi+%2B+Orang+Senyum');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* This creates the parallax effect */
+            min-height: 400px; /* Ensure sufficient height for effect */
+            width: 100%;
+            border-radius: 0.75rem; /* rounded-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+        }
+
+        /* Specific styles for card hover effects */
+        .service-card, .advantage-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .service-card:hover, .advantage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15), 0 6px 10px -3px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg py-4 px-6 md:px-12 sticky top-0 z-50">
+        <nav class="container mx-auto flex justify-between items-center">
+            <!-- Logo - Made larger for better visibility -->
+            <a href="#" class="h-16 md:h-20 flex items-center">
+                <img src="Mr Clean-12.png" alt="Mr. Clean Laundry Logo" class="h-full w-auto">
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-dark-blue focus:outline-none">
+                    <i class="fas fa-bars text-3xl"></i>
+                </button>
+            </div>
+
+            <!-- Navigation Menu (Desktop) -->
+            <ul class="hidden md:flex space-x-10 text-lg">
+                <li><a href="#beranda" class="text-gray-700 hover:text-dark-blue font-semibold transition-colors duration-300 relative pb-1 group">Beranda<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-bright-yellow group-hover:w-full transition-all duration-300"></span></a></li>
+                <li><a href="#layanan" class="text-gray-700 hover:text-dark-blue font-semibold transition-colors duration-300 relative pb-1 group">Layanan<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-bright-yellow group-hover:w-full transition-all duration-300"></span></a></li>
+                <li><a href="#harga" class="text-gray-700 hover:text-dark-blue font-semibold transition-colors duration-300 relative pb-1 group">Harga<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-bright-yellow group-hover:w-full transition-all duration-300"></span></a></li>
+                <li><a href="#keanggotaan" class="text-gray-700 hover:text-dark-blue font-semibold transition-colors duration-300 relative pb-1 group">Keanggotaan<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-bright-yellow group-hover:w-full transition-all duration-300"></span></a></li>
+                <li><a href="#kontak" class="text-gray-700 hover:text-dark-blue font-semibold transition-colors duration-300 relative pb-1 group">Kontak<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-bright-yellow group-hover:w-full transition-all duration-300"></span></a></li>
+            </ul>
+
+            <!-- CTA Button (Desktop) -->
+            <a href="#" class="hidden md:block btn-primary">Jemput Laundry</a>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white py-4 mt-4 rounded-lg shadow-lg">
+            <ul class="flex flex-col items-center space-y-4 text-lg">
+                <li><a href="#beranda" class="text-gray-700 hover:text-dark-blue font-medium transition-colors duration-300 py-2 block w-full text-center">Beranda</a></li>
+                <li><a href="#layanan" class="text-gray-700 hover:text-dark-blue font-medium transition-colors duration-300 py-2 block w-full text-center">Layanan</a></li>
+                <li><a href="#harga" class="text-gray-700 hover:text-dark-blue font-medium transition-colors duration-300 py-2 block w-full text-center">Harga</a></li>
+                <li><a href="#keanggotaan" class="text-gray-700 hover:text-dark-blue font-medium transition-colors duration-300 py-2 block w-full text-center">Keanggotaan</a></li>
+                <li><a href="#kontak" class="text-gray-700 hover:text-dark-blue font-medium transition-colors duration-300 py-2 block w-full text-center">Kontak</a></li>
+                <li><a href="#" class="btn-primary w-4/5 text-center block mt-4">Order Sekarang</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="beranda" class="bg-dark-blue text-white py-20 md:py-32 px-6 md:px-12 relative overflow-hidden flex items-center min-h-screen-75">
+            <div class="absolute inset-0 hero-image-parallax z-0"></div>
+            <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-10 relative z-10">
+                <div class="text-center md:text-left md:w-1/2 slide-in-left" style="animation-delay: 0.1s;">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 text-bright-yellow drop-shadow-md">
+                        Bersih, Wangi, dan Rapi — Cuci Jadi Praktis Bareng Mr Clean!
+                    </h1>
+                    <p class="text-lg md:text-xl mb-10 opacity-90 leading-relaxed">
+                        Layanan laundry profesional dengan hasil maksimal dan garansi cuci ulang.
+                    </p>
+                    <a href="#" class="btn-primary text-xl">Coba Sekarang</a>
+                </div>
+                <div class="md:w-1/2 relative flex justify-center slide-in-right" style="animation-delay: 0.3s;">
+                    <!-- The actual image for the hero is now set as a background for parallax -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Tentang Kami Section -->
+        <section class="py-16 md:py-24 px-6 md:px-12 bg-white shadow-inner">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-dark-blue mb-12 fade-in-up" style="animation-delay: 0.5s;">Tentang Mr. Clean Laundry</h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-16 fade-in-up" style="animation-delay: 0.7s;">
+                    Mr. Clean Laundry adalah penyedia layanan laundry profesional yang berkomitmen untuk memberikan hasil cucian terbaik. Dengan teknologi modern dan tim berpengalaman, kami memastikan pakaian Anda bersih cemerlang, wangi, dan rapi sempurna. Kepuasan Anda adalah prioritas kami, didukung oleh garansi cuci ulang!
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+                    <div class="advantage-card p-8 bg-blue-50 rounded-xl shadow-md flex flex-col items-center text-center fade-in-up" style="animation-delay: 0.9s;">
+                        <div class="text-5xl text-bright-yellow mb-5"><i class="fas fa-hand-sparkles"></i></div>
+                        <h3 class="text-2xl font-semibold text-dark-blue mb-3">Profesional</h3>
+                        <p class="text-gray-600">Proses standar tinggi dan perhatian detail untuk hasil optimal.</p>
+                    </div>
+                    <div class="advantage-card p-8 bg-blue-50 rounded-xl shadow-md flex flex-col items-center text-center fade-in-up" style="animation-delay: 1.1s;">
+                        <div class="text-5xl text-bright-yellow mb-5"><i class="fas fa-truck-fast"></i></div>
+                        <h3 class="text-2xl font-semibold text-dark-blue mb-3">Tepat Waktu</h3>
+                        <p class="text-gray-600">Layanan cepat dan efisien, pakaian Anda siap sesuai janji kami.</p>
+                    </div>
+                    <div class="advantage-card p-8 bg-blue-50 rounded-xl shadow-md flex flex-col items-center text-center fade-in-up" style="animation-delay: 1.3s;">
+                        <div class="text-5xl text-bright-yellow mb-5"><i class="fas fa-shield-alt"></i></div>
+                        <h3 class="text-2xl font-semibold text-dark-blue mb-3">Garansi Cuci Ulang</h3>
+                        <p class="text-gray-600">Jaminan kepuasan penuh. Kami siap cuci ulang jika diperlukan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Layanan Kami Section -->
+        <section id="layanan" class="py-16 md:py-24 px-6 md:px-12 bg-gray-50">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-dark-blue mb-12 fade-in-up" style="animation-delay: 0.5s;">Layanan Kami</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Service Item: Cuci Lipat -->
+                    <div class="service-card bg-white p-10 rounded-xl shadow-lg flex flex-col items-center text-center fade-in-up" style="animation-delay: 0.7s;">
+                        <div class="text-6xl text-bright-yellow mb-5"><i class="fas fa-tshirt"></i></div>
+                        <h3 class="text-2xl font-semibold text-dark-blue mb-3">Cuci Lipat</h3>
+                        <p class="text-gray-600">Pakaian Anda bersih, wangi, dan dilipat rapi siap masuk lemari.</p>
+                    </div>
+                    <!-- Service Item: Cuci Setrika -->
+                    <div class="service-card bg-white p-10 rounded-xl shadow-lg flex flex-col items-center text-center fade-in-up" style="animation-delay: 0.9s;">
+                        <div class="text-6xl text-bright-yellow mb-5"><i class="fas fa-spray-can"></i></div>
+                        <h3 class="text-2xl font-semibold text-dark-blue mb-3">Cuci Setrika</h3>
+                        <p class="text-gray-600">Layanan lengkap: cuci, kering, dan setrika sempurna untuk pakaian Anda.</p>
+                    </div>
+                    <!-- Service Item: Setrika Saja -->
+                    <div class="service-card bg-white p-10 rounded-xl shadow-lg flex flex-col items-center text-center fade-in-up" style="animation-delay: 1.1s;">
+                        <div class="text-6xl text-bright-yellow mb-5"><i class="fas fa-wind"></i></div>
+                        <h3 class="text-2xl font-semibold text-dark-blue mb-3">Setrika Saja</h3>
+                        <p class="text-gray-600">Pakaian Anda sudah bersih? Kami bantu setrika hingga licin dan rapi.</p>
+                    </div>
+                    <!-- Service Item: Cuci Satuan -->
+                    <div class="service-card bg-white p-10 rounded-xl shadow-lg flex flex-col items-center text-center fade-in-up" style="animation-delay: 1.3s;">
+                        <div class="text-6xl text-bright-yellow mb-5"><i class="fas fa-chair"></i></div>
+                        <h3 class="text-2xl font-semibold text-dark-blue mb-3">Cuci Satuan</h3>
+                        <p class="text-gray-600">Khusus untuk selimut, bed cover, karpet, boneka, dan barang lainnya.</p>
+                    </div>
+                    <!-- Service Item: Jemput-Antar -->
+                    <div class="service-card bg-white p-10 rounded-xl shadow-lg flex flex-col items-center text-center fade-in-up" style="animation-delay: 1.5s;">
+                        <div class="text-6xl text-bright-yellow mb-5"><i class="fas fa-map-marked-alt"></i></div>
+                        <h3 class="text-2xl font-semibold text-dark-blue mb-3">Jemput–Antar</h3>
+                        <p class="text-gray-600 text-center">Kami jemput cucian Anda dan antar kembali saat sudah bersih.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Harga Section - Updated with detailed price list -->
+        <section id="harga" class="py-16 md:py-24 px-6 md:px-12 bg-white">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-dark-blue mb-12 fade-in-up" style="animation-delay: 0.5s;">Daftar Harga</h2>
+
+                <div class="space-y-10">
+                    <!-- Regulasi (Per Kg) -->
+                    <div class="rounded-xl shadow-lg overflow-hidden fade-in-up" style="animation-delay: 0.7s;">
+                        <h3 class="text-2xl font-bold bg-dark-blue text-bright-yellow py-4 px-6 text-left">REGULER (Per Kg)</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200">
+                                <thead class="bg-blue-100 text-dark-blue">
+                                    <tr>
+                                        <th class="py-3 px-4 text-left">Layanan</th>
+                                        <th class="py-3 px-4 text-center">Harga Non-Member</th>
+                                        <th class="py-3 px-4 text-center">Harga Member</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Cuci Setrika</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 7.000 / Kg</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 6.000 / Kg</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Cuci Lipat</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 5.000 / Kg</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 4.500 / Kg</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Setrika Saja</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 5.000 / Kg</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 4.500 / Kg</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Cuci Kilat & Express -->
+                    <div class="rounded-xl shadow-lg overflow-hidden fade-in-up" style="animation-delay: 0.9s;">
+                        <h3 class="text-2xl font-bold bg-dark-blue text-bright-yellow py-4 px-6 text-left">CUCI KILAT & EXPRESS</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200">
+                                <thead class="bg-blue-100 text-dark-blue">
+                                    <tr>
+                                        <th class="py-3 px-4 text-left">Layanan</th>
+                                        <th class="py-3 px-4 text-center">Harga Non-Member</th>
+                                        <th class="py-3 px-4 text-center">Harga Member</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Cuci Setrika < 3kg</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 11.000 / Kg</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 10.000 / Kg</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Cuci Setrika > 3kg</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 10.000 / Kg</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 9.000 / Kg</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Cuci Lipat < 3kg</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 9.000 / Kg</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 8.000 / Kg</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Cuci Lipat > 3kg</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 8.000 / Kg</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 7.000 / Kg</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Cuci Express 3 Jam</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 18.000 / Kg</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 16.000 / Kg</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Alat Tidur -->
+                    <div class="rounded-xl shadow-lg overflow-hidden fade-in-up" style="animation-delay: 1.1s;">
+                        <h3 class="text-2xl font-bold bg-dark-blue text-bright-yellow py-4 px-6 text-left">ALAT TIDUR</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200">
+                                <thead class="bg-blue-100 text-dark-blue">
+                                    <tr>
+                                        <th class="py-3 px-4 text-left">Layanan</th>
+                                        <th class="py-3 px-4 text-center">Harga Non-Member</th>
+                                        <th class="py-3 px-4 text-center">Harga Member</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">1 Set Sprei</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 8.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 7.000 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Selimut Uk Kecil</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 15.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 13.500 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Selimut Uk Sedang</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 20.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 18.000 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Selimut Uk Besar</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 25.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 22.500 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Selimut Uk Khusus</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 50.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 45.000 / Pcs</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Tambahan -->
+                    <div class="rounded-xl shadow-lg overflow-hidden fade-in-up" style="animation-delay: 1.3s;">
+                        <h3 class="text-2xl font-bold bg-dark-blue text-bright-yellow py-4 px-6 text-left">TAMBAHAN</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200">
+                                <thead class="bg-blue-100 text-dark-blue">
+                                    <tr>
+                                        <th class="py-3 px-4 text-left">Layanan</th>
+                                        <th class="py-3 px-4 text-center">Harga Non-Member</th>
+                                        <th class="py-3 px-4 text-center">Harga Member</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">+ Kilat 1 Hari</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 8.000</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 7.000</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">+ Express 6 Jam</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 12.000</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 10.000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Cuci Satuan -->
+                    <div class="rounded-xl shadow-lg overflow-hidden fade-in-up" style="animation-delay: 1.5s;">
+                        <h3 class="text-2xl font-bold bg-dark-blue text-bright-yellow py-4 px-6 text-left">CUCI SATUAN</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200">
+                                <thead class="bg-blue-100 text-dark-blue">
+                                    <tr>
+                                        <th class="py-3 px-4 text-left">Layanan</th>
+                                        <th class="py-3 px-4 text-center">Harga Non-Member</th>
+                                        <th class="py-3 px-4 text-center">Harga Member</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Tas Ransel</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 15.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 13.500 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Jaket</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 15.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 13.500 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Setelan Jas</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 25.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 22.500 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Pakaian Dinas</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 20.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 18.000 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Pakaian Dinas/Pasang</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 25.000 / Pasang</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 22.500 / Pasang</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Setelan Pesta</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 30.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 27.000 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Sajadah</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 15.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 13.500 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Mukena</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 20.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 18.000 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Sarung</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 10.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 9.000 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Setelan Safari</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 28.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 25.000 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Kemeja</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 15.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 13.500 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Kaos</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 10.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 9.000 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Long Dress</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 20.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 18.000 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Boneka S</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 20.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 18.000 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Boneka M</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 25.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 22.500 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Boneka L</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 30.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 27.000 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Boneka XL</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 35.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 31.500 / Pcs</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Treatment Khusus -->
+                    <div class="rounded-xl shadow-lg overflow-hidden fade-in-up" style="animation-delay: 1.7s;">
+                        <h3 class="text-2xl font-bold bg-dark-blue text-bright-yellow py-4 px-6 text-left">TREATMENT KHUSUS</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200">
+                                <thead class="bg-blue-100 text-dark-blue">
+                                    <tr>
+                                        <th class="py-3 px-4 text-left">Layanan</th>
+                                        <th class="py-3 px-4 text-center">Harga Non-Member</th>
+                                        <th class="py-3 px-4 text-center">Harga Member</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Baby Care Pakaian Bayi</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 4.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 3.500 / Pcs</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Pakaian Putih (Lipat)</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 7.000 / Kg</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 6.000 / Kg</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Pakaian Putih (Setrika)</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 10.000 / Kg</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 9.000 / Kg</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
+                                        <td class="py-3 px-4 font-medium text-gray-800">Pakaian Dalam</td>
+                                        <td class="py-3 px-4 text-center text-gray-700">Rp 4.000 / Pcs</td>
+                                        <td class="py-3 px-4 text-center text-dark-blue font-semibold">Rp 3.500 / Pcs</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center fade-in-up" style="animation-delay: 1.9s;">
+                     <p class="text-lg text-gray-700">Dapatkan harga spesial dengan menjadi <a href="#keanggotaan" class="text-dark-blue font-bold hover:underline">Member Mr. Clean Laundry</a>!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimoni Pelanggan Section -->
+        <section class="py-16 md:py-24 px-6 md:px-12 bg-gray-50">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-dark-blue mb-12 fade-in-up" style="animation-delay: 0.5s;">Kata Pelanggan Kami</h2>
+
+                <div class="carousel-container relative max-w-2xl mx-auto rounded-xl shadow-xl bg-white p-8 fade-in-up" style="animation-delay: 0.7s;">
+                    <div class="carousel-track flex">
+                        <!-- Testimonial 1 -->
+                        <div class="carousel-item p-4 text-center flex flex-col items-center">
+                            <p class="text-6xl text-bright-yellow mb-4"><i class="fas fa-quote-left"></i></p>
+                            <p class="text-lg italic text-gray-700 mb-6 leading-relaxed">
+                                "Sangat puas dengan Mr. Clean Laundry! Pakaian selalu bersih, wangi, dan dilipat sangat rapi. Layanan jemput-antar juga sangat membantu. Rekomendasi banget!"
+                            </p>
+                            <p class="font-semibold text-dark-blue text-lg">- Sarah M.</p>
+                            <div class="text-bright-yellow mt-3 text-xl">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 2 -->
+                        <div class="carousel-item p-4 text-center flex flex-col items-center">
+                            <p class="text-6xl text-bright-yellow mb-4"><i class="fas fa-quote-left"></i></p>
+                            <p class="text-lg italic text-gray-700 mb-6 leading-relaxed">
+                                "Baru pertama kali coba, langsung jatuh cinta! Cucian selesai tepat waktu, dan garansi cuci ulangnya bikin makin tenang. Mr. Clean memang top!"
+                            </p>
+                            <p class="font-semibold text-dark-blue text-lg">- Budi Santoso</p>
+                            <div class="text-bright-yellow mt-3 text-xl">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 3 -->
+                        <div class="carousel-item p-4 text-center flex flex-col items-center">
+                            <p class="text-6xl text-bright-yellow mb-4"><i class="fas fa-quote-left"></i></p>
+                            <p class="text-lg italic text-gray-700 mb-6 leading-relaxed">
+                                "Pelayanannya ramah, harganya bersahabat, dan kualitas cuciannya luar biasa. Sekarang gak perlu pusing lagi mikirin laundry, serahkan saja pada Mr. Clean!"
+                            </p>
+                            <p class="font-semibold text-dark-blue text-lg">- Siti Aisyah</p>
+                            <div class="text-bright-yellow mt-3 text-xl">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carousel navigation buttons -->
+                    <button id="prev-testimonial" class="absolute left-0 top-1/2 -translate-y-1/2 bg-dark-blue text-white p-3 rounded-full shadow-lg hover:bg-blue-700 focus:outline-none ml-3 opacity-80 hover:opacity-100 transition-opacity duration-300">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="next-testimonial" class="absolute right-0 top-1/2 -translate-y-1/2 bg-dark-blue text-white p-3 rounded-full shadow-lg hover:bg-blue-700 focus:outline-none mr-3 opacity-80 hover:opacity-100 transition-opacity duration-300">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section (Ajakan) -->
+        <section class="bg-bright-yellow py-16 md:py-24 px-6 md:px-12 text-center shadow-inner">
+            <div class="container mx-auto fade-in-up" style="animation-delay: 0.5s;">
+                <h2 class="text-3xl md:text-5xl font-bold text-dark-blue mb-10 drop-shadow-sm">Mau cucian beres tanpa stres?</h2>
+                <a href="#" class="btn-secondary text-xl">Jemput Laundry Saya Sekarang</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer - Updated with multiple addresses, new email, and unified hours -->
+    <footer id="kontak" class="bg-dark-blue text-white py-12 md:py-16 px-6 md:px-12 shadow-inner-top">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Alamat & Jam Operasional -->
+            <div class="fade-in-up" style="animation-delay: 0.1s;">
+                <h3 class="text-2xl font-bold text-bright-yellow mb-5">Mr. Clean Laundry</h3>
+                <!-- Logo in Footer -->
+                <img src="Mr Clean-12.png" alt="Mr. Clean Laundry Logo" class="h-12 w-auto mb-4 mx-auto md:mx-0">
+                
+                <p class="text-gray-300 mb-3 font-semibold">Outlet Parepare:</p>
+                <p class="text-gray-300 mb-4">Jl. Kesuma No. 1, Parepare</p>
+                <p class="text-gray-300 mb-3 font-semibold">Outlet Malang:</p>
+                <p class="text-gray-300 mb-4">Mr Clean Shoes, Pakis, Kota Malang</p>
+
+                <p class="text-gray-300 mb-2"><i class="fas fa-phone-alt mr-3"></i>085143971798</p>
+                <p class="text-gray-300 mb-4"><i class="fas fa-envelope mr-3"></i>mrclean.srvc@gmail.com</p>
+
+                <h4 class="text-xl font-semibold text-bright-yellow mb-3">Jam Operasional:</h4>
+                <p class="text-gray-300">Setiap Hari: 08:00 - 21:00 WITA</p>
+            </div>
+
+            <!-- Link Media Sosial & Google Maps -->
+            <div class="flex flex-col items-center md:items-start fade-in-up" style="animation-delay: 0.3s;">
+                <h3 class="text-2xl font-bold text-bright-yellow mb-5">Ikuti Kami</h3>
+                <div class="flex space-x-8 text-3xl mb-8">
+                    <a href="https://wa.me/6285143971798" target="_blank" class="text-gray-300 hover:text-bright-yellow transition-transform transform hover:-translate-y-1 duration-300" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/mc_laundry.id" target="_blank" class="text-gray-300 hover:text-bright-yellow transition-transform transform hover:-translate-y-1 duration-300" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://maps.app.goo.gl/LQw7AQUZC2DY8ijUA" target="_blank" class="text-gray-300 hover:text-bright-yellow transition-transform transform hover:-translate-y-1 duration-300" aria-label="Google Maps"><i class="fas fa-map-marker-alt"></i></a>
+                </div>
+                <h3 class="text-2xl font-bold text-bright-yellow mb-5">Lokasi Kami</h3>
+                <!-- Updated Google Map for Parepare location -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.8577789047916!2d119.63004817496662!3d-4.030588645063079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d95267b1b590e87%3A0x8f2d5a3c2b8b9a1a!2sJl.%20Kesuma%20No.1%2C%20Watang%20Bacukiki%2C%20Kec.%20Bacukiki%2C%20Kota%20Parepare%2C%20Sulawesi%20Selatan!5e0!3m2!1sen!2sid!4v1719412000000!5m2!1sen!2sid"
+                    width="100%"
+                    height="250"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="rounded-xl shadow-lg"
+                ></iframe>
+            </div>
+
+            <!-- Form Singkat -->
+            <div class="fade-in-up" style="animation-delay: 0.5s;">
+                <h3 class="text-2xl font-bold text-bright-yellow mb-5">Ada Pertanyaan?</h3>
+                <form class="space-y-5">
+                    <div>
+                        <label for="nama" class="sr-only">Nama</label>
+                        <input type="text" id="nama" name="nama" placeholder="Nama Anda"
+                               class="w-full p-4 rounded-md bg-dark-blue border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bright-yellow focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="kontak" class="sr-only">Email / No. Telepon</label>
+                        <input type="text" id="kontak" name="kontak" placeholder="Email / No. Telepon"
+                               class="w-full p-4 rounded-md bg-dark-blue border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bright-yellow focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="pesan" class="sr-only">Pesan</label>
+                        <textarea id="pesan" name="pesan" rows="5" placeholder="Pesan Anda..."
+                                  class="w-full p-4 rounded-md bg-dark-blue border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bright-yellow focus:border-transparent"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full text-lg">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center text-gray-400 text-sm mt-12 border-t border-gray-700 pt-8">
+            &copy; 2024 Mr. Clean Laundry. Hak Cipta Dilindungi.
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                // Only prevent default and scroll if href is not just '#'
+                if (href && href !== '#') {
+                    e.preventDefault();
+                    // Check if the target element exists before trying to scroll
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        console.warn(`Target element for href "${href}" not found.`);
+                    }
+                } else if (href === '#') {
+                    // Prevent default for empty '#' links that aren't meant to scroll to a section
+                    e.preventDefault();
+                }
+
+                // Close mobile menu after clicking a link
+                if (document.getElementById('mobile-menu').classList.contains('flex')) {
+                    document.getElementById('mobile-menu').classList.remove('flex');
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        // Testimonial Carousel Logic
+        const carouselTrack = document.querySelector('.carousel-track');
+        const testimonialItems = document.querySelectorAll('.carousel-item');
+        const prevButton = document.getElementById('prev-testimonial');
+        const nextButton = document.getElementById('next-testimonial');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            if (!testimonialItems.length) return; // Add a guard to prevent errors if no items
+            const itemWidth = testimonialItems[0].clientWidth;
+            carouselTrack.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : testimonialItems.length - 1;
+            updateCarousel();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex < testimonialItems.length - 1) ? currentIndex + 1 : 0;
+            updateCarousel();
+        });
+
+        // Auto-play carousel
+        let carouselInterval = setInterval(() => {
+            currentIndex = (currentIndex < testimonialItems.length - 1) ? currentIndex + 1 : 0;
+            updateCarousel();
+        }, 5000); // Change slide every 5 seconds
+
+        // Pause auto-play on hover
+        carouselTrack.addEventListener('mouseenter', () => clearInterval(carouselInterval));
+        carouselTrack.addEventListener('mouseleave', () => {
+            carouselInterval = setInterval(() => {
+                currentIndex = (currentIndex < testimonialItems.length - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            }, 5000);
+        });
+
+
+        // Update carousel on window resize
+        window.addEventListener('resize', updateCarousel);
+        // Initial update
+        window.addEventListener('load', updateCarousel); // Ensure images are loaded before calculating width
+
+
+        // Scroll animation (fade-in-up)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the item is visible
+        });
+
+        // Apply to all sections and cards
+        document.querySelectorAll('section, .advantage-card, .service-card, .rounded-xl.shadow-lg').forEach(element => {
+            observer.observe(element);
+        });
+
+    </script>
+</body>
+</html>
