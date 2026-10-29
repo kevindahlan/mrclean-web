@@ -13,14 +13,18 @@
   <style>
     :root{--navy:#082c52;--blue:#1267a5;--sky:#eaf5ff;--yellow:#ffd34e;--ink:#10243a;--muted:#63758a;--white:#fff;--line:#e2ebf3;--shadow:0 20px 55px rgba(8,44,82,.12)}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:"DM Sans",sans-serif;background:#fff}a{color:inherit;text-decoration:none}button{font:inherit}.container{width:min(1160px,calc(100% - 40px));margin:auto}
-    /* Secondary views are switched by JavaScript; keep content visible if scripts are unavailable */
-    main>section{display:block;min-height:58vh}
-    .cta-wrap{display:block}
-    body.js-ready main>section{display:none}
-    body.js-ready main>section.core-section{display:block}
-    body.js-ready main>section.page-active{display:block;animation:pageReveal .24s ease-out}
-    body.js-ready .cta-wrap{display:none}
-    body.js-ready .cta-wrap.page-active{display:block;animation:pageReveal .24s ease-out}
+    /* Main view shows core sections; secondary views are shown only when selected */
+    main>section{display:none;min-height:58vh}
+    main>section#home,main>section#layanan,main>section#keunggulan,main>section#cara{display:block}
+    main>section.page-active{display:block;animation:pageReveal .24s ease-out}
+    .cta-wrap{display:none}
+    .cta-wrap.page-active{display:block;animation:pageReveal .24s ease-out}
+    footer{display:none}
+    body.contact-page footer{display:block}
+    .partner-accordion>.partner-details{display:block!important}
+    .partner-summary-hint{font-size:12px}
+    .partner-summary-hint .partner-chevron{display:none}
+    .partner-summary-hint{border-top:0;padding-top:8px;margin-top:0}
     @keyframes pageReveal{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
     .navlinks a[aria-current="page"]{color:var(--blue)}
     .topbar{background:var(--navy);color:#dcecff;font-size:12px;padding:10px 0}.topbar .container{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.topbar strong{color:var(--yellow)}
@@ -179,7 +183,7 @@
     <section class="partnership" id="kemitraan"><div class="container">
       <div class="section-head"><span class="kicker">Grow with Mr Clean</span><h2>Peluang Kemitraan Mr Clean Laundry</h2><p>Bangun bisnis laundry bersama Mr Clean.</p><p class="partnership-lead">Bergabunglah bersama Mr Clean Laundry untuk mengembangkan bisnis laundry dengan dukungan sistem operasional, standar pelayanan, dan identitas brand yang konsisten. Cocok bagi calon pengusaha yang ingin memulai bisnis maupun pemilik usaha yang ingin mengembangkan jaringan outlet.</p></div>
       <div class="partner-grid">
-        <details class="partner-card partner-accordion"><summary><span class="partner-label">Paket Starter</span><span class="partner-summary-price">Mulai Rp80 Jutaan</span><span class="partner-summary-hint">Klik untuk melihat detail <span class="partner-chevron">＋</span></span></summary><div class="partner-details"><p>Pilihan awal untuk memulai bisnis laundry dengan investasi lebih terjangkau.</p><ul><li>Cocok untuk calon mitra pemula</li><li>Rincian fasilitas dikonfirmasi bersama tim</li></ul><a class="btn btn-outline partner-btn" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Tanyakan Paket ↗</a></div></details>
+        <details class="partner-card partner-accordion"><summary><span class="partner-label">Paket Starter</span><span class="partner-summary-price">Mulai Rp80 Jutaan</span><span class="partner-summary-hint">Detail paket <span class="partner-chevron">＋</span></span></summary><div class="partner-details"><p>Pilihan awal untuk memulai bisnis laundry dengan investasi lebih terjangkau.</p><ul><li>Cocok untuk calon mitra pemula</li><li>Rincian fasilitas dikonfirmasi bersama tim</li></ul><a class="btn btn-outline partner-btn" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Tanyakan Paket ↗</a></div></details>
         <details class="partner-card partner-featured partner-accordion"><summary><span class="partner-label">Paket Growth</span><span class="partner-summary-price">Rp100 Jutaan</span><span class="partner-summary-hint">Klik untuk melihat detail <span class="partner-chevron">＋</span></span></summary><div class="partner-details"><p>Untuk mitra yang ingin mengembangkan outlet dengan cakupan fasilitas lebih lengkap.</p><ul><li>Detail peralatan dikonfirmasi bersama tim</li><li>Dukungan operasional dan fasilitas dibahas sesuai kebutuhan</li></ul><a class="btn btn-yellow partner-btn" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Tanyakan Paket ↗</a></div></details>
         <details class="partner-card partner-accordion"><summary><span class="partner-label">Paket Premium</span><span class="partner-summary-price">Rp120 Jutaan</span><span class="partner-summary-hint">Klik untuk melihat detail <span class="partner-chevron">＋</span></span></summary><div class="partner-details"><p>Untuk mitra yang menginginkan pengembangan outlet dengan cakupan fasilitas lebih luas.</p><ul><li>Detail paket dikonfirmasi bersama tim</li><li>Dukungan yang tersedia dibahas saat konsultasi</li></ul><a class="btn btn-outline partner-btn" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Tanyakan Paket ↗</a></div></details>
       </div>
@@ -208,6 +212,7 @@
       function showPage(id,updateHash){
         if(!allIds.includes(id)&&id!=='kontak')id='home';
         const isCore=coreIds.includes(id);
+        document.body.classList.toggle('contact-page',id==='kontak');
         sections.forEach(s=>{
           const visible=coreIds.includes(s.id) ? isCore : s.id===id;
           s.classList.toggle('page-active',visible && (!coreIds.includes(s.id)||s.id===id));
