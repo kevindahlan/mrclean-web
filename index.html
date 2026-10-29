@@ -13,9 +13,11 @@
   <style>
     :root{--navy:#082c52;--blue:#1267a5;--sky:#eaf5ff;--yellow:#ffd34e;--ink:#10243a;--muted:#63758a;--white:#fff;--line:#e2ebf3;--shadow:0 20px 55px rgba(8,44,82,.12)}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:"DM Sans",sans-serif;background:#fff}a{color:inherit;text-decoration:none}button{font:inherit}.container{width:min(1160px,calc(100% - 40px));margin:auto}
-    /* Simple page-style navigation: show only the selected section */
+    /* Home combines the core sections; secondary menu items open as separate views */
     main>section{display:none;min-height:58vh}
+    main>section.core-section{display:block}
     main>section.page-active{display:block;animation:pageReveal .24s ease-out}
+    main>section.core-section.page-active{display:block}
     .cta-wrap.page-active{display:block;animation:pageReveal .24s ease-out}
     .cta-wrap{display:none}
     @keyframes pageReveal{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
@@ -196,18 +198,24 @@
   <script>
     document.getElementById('year').textContent=new Date().getFullYear();
     (function(){
-      const pageIds=['home','layanan','keunggulan','cara','ulasan','faq','kemitraan'];
-      const sections=pageIds.map(id=>document.getElementById(id)).filter(Boolean);
+      const coreIds=['home','layanan','keunggulan','cara'];
+      const separateIds=['ulasan','faq','kemitraan'];
+      const allIds=coreIds.concat(separateIds);
+      const sections=allIds.map(id=>document.getElementById(id)).filter(Boolean);
       const contactView=document.querySelector('.cta-wrap');
+      sections.forEach(s=>s.classList.toggle('core-section',coreIds.includes(s.id)));
       function showPage(id,updateHash){
-        if(id==='kontak'){id='kontak';sections.forEach(s=>s.classList.remove('page-active'));if(contactView)contactView.classList.add('page-active');}
-        else{
-          if(!pageIds.includes(id))id='home';
-          sections.forEach(s=>s.classList.toggle('page-active',s.id===id));
-          if(contactView)contactView.classList.remove('page-active');
-        }
+        if(!allIds.includes(id)&&id!=='kontak')id='home';
+        const isCore=coreIds.includes(id);
+        sections.forEach(s=>{
+          if(s.classList.contains('core-section'))s.classList.remove('page-active');
+          else s.classList.toggle('page-active',s.id===id&&!isCore);
+        });
+        if(contactView)contactView.classList.toggle('page-active',id==='kontak');
+        if(isCore)document.getElementById(id)?.classList.add('page-active');
         document.querySelectorAll('.navlinks a').forEach(a=>{
-          const active=a.getAttribute('href')==='#'+id;
+          const href=a.getAttribute('href');
+          const active=href==='#'+id || (isCore && ['#home','#layanan','#keunggulan','#cara'].includes(href));
           if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
         });
         if(updateHash && location.hash!=='#'+id)history.pushState(null,'','#'+id);
@@ -217,7 +225,7 @@
         const a=e.target.closest('a[href^="#"]');
         if(!a)return;
         const id=a.getAttribute('href').slice(1);
-        if(!pageIds.includes(id)&&id!=='kontak')return;
+        if(!allIds.includes(id)&&id!=='kontak')return;
         e.preventDefault();showPage(id,true);
       });
       window.addEventListener('popstate',()=>showPage(location.hash.slice(1)||'home',false));
