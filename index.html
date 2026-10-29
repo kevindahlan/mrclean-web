@@ -26,6 +26,34 @@
     @media(max-width:560px){.container{width:min(100% - 30px,1160px)}.topbar .container{justify-content:center;text-align:center}.nav{height:68px}.nav .btn{padding:11px 13px;font-size:11px}.brand{font-size:14px}.brand-logo{width:125px;max-height:42px}.hero h1{font-size:43px}.hero p{font-size:14px}.hero-art{min-height:310px}.art-main{height:285px;border-radius:24px}.float-one{top:5px}.float-two{bottom:4px}.floating-card{padding:10px 12px}.floating-card .ico{width:34px;height:34px;font-size:18px}.floating-card strong{font-size:11px}.floating-card small{font-size:9px}.stats{grid-template-columns:1fr;gap:17px}.stat{justify-content:flex-start;padding-left:18%}.service-grid,.step-grid{grid-template-columns:1fr}.service-card{padding:23px}section{padding:66px 0}.promise-visual{min-height:270px}.cta{padding:28px 23px}.cta .btn{width:100%}.footer-grid{grid-template-columns:1fr;gap:28px}.footer-grid>div:first-child{grid-column:auto}.copyright{flex-direction:column}.mobile-cta{display:flex;position:fixed;z-index:20;bottom:12px;left:12px;right:12px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:17px;box-shadow:0 10px 40px #082c5230}.mobile-cta .btn{width:100%}footer{padding-bottom:100px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 
+    .partnership{background:linear-gradient(180deg,#f5faff 0%,#fff 100%)}
+    .partnership .section-head>p:first-of-type{font:700 19px Manrope,sans-serif;color:var(--navy);margin:12px 0}
+    .partnership .section-head .partnership-lead{max-width:790px;margin:0 auto;color:var(--muted);font-size:14px;line-height:1.9;font-weight:400}
+    .partner-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+    .partner-card{display:flex;flex-direction:column;align-items:flex-start;padding:29px;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:0 12px 34px rgba(9,43,75,.055);transition:transform .2s,box-shadow .2s}
+    .partner-card:hover{transform:translateY(-5px);box-shadow:0 22px 45px rgba(9,43,75,.1)}
+    .partner-featured{border:1.5px solid #b8d9f2;box-shadow:0 18px 42px rgba(9,43,75,.1);position:relative}
+    .partner-label{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:#edf7ff;color:#1267a5;font-size:11px;font-weight:800;letter-spacing:.5px}
+    .partner-card h3{font:800 clamp(22px,2.2vw,28px)/1.2 Manrope,sans-serif;letter-spacing:-.8px;color:var(--navy);margin:20px 0 12px}
+    .partner-card>p{font-size:13px;line-height:1.8;color:var(--muted);margin:0 0 15px}
+    .partner-card ul{padding-left:18px;margin:0 0 24px;color:#43576d;font-size:12px;line-height:1.9}
+    .partner-btn{margin-top:auto;width:100%;justify-content:center;text-align:center}
+    .partner-note{max-width:900px;margin:22px auto 0;padding:15px 18px;border-radius:14px;background:#f1f6fa;color:#5d7184;font-size:11px;line-height:1.8}
+    .partner-support{margin-top:75px;display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
+    .partner-support-head h3,.partner-cta h3{font:800 clamp(24px,3vw,34px)/1.2 Manrope,sans-serif;letter-spacing:-1px;color:var(--navy);margin:14px 0}
+    .partner-support-head p,.partner-cta p{font-size:13px;line-height:1.8;color:var(--muted);margin:0}
+    .partner-benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+    .partner-benefits article{display:flex;gap:13px;padding:18px;border:1px solid var(--line);border-radius:18px;background:#fff}
+    .partner-icon{display:grid;place-items:center;flex:0 0 36px;height:36px;border-radius:12px;background:#edf7ff;color:var(--blue);font-weight:800}
+    .partner-benefits h4{font:800 13px Manrope,sans-serif;color:var(--navy);margin:1px 0 7px}
+    .partner-benefits p{font-size:11px;line-height:1.7;color:var(--muted);margin:0}
+    .partner-cta{display:flex;align-items:center;justify-content:space-between;gap:25px;margin-top:55px;padding:32px;border-radius:24px;background:linear-gradient(115deg,#edf7ff,#fff);border:1px solid #d9eaf7}
+    .partner-cta>div{max-width:650px}
+    .partner-cta h3{font-size:24px;margin:0 0 9px}
+    .partner-cta .btn{flex-shrink:0;text-align:center}
+    @media(max-width:850px){.partner-grid{grid-template-columns:1fr}.partner-card{padding:26px}.partner-card h3{font-size:27px}.partner-support{grid-template-columns:1fr;gap:25px}.partner-cta{align-items:flex-start;flex-direction:column}.partner-cta .btn{width:100%}}
+    @media(max-width:560px){.partner-benefits{grid-template-columns:1fr}.partner-support{margin-top:50px}.partner-cta{padding:24px 20px;margin-top:38px}.partner-cta h3{font-size:22px}.partnership .section-head .partnership-lead{font-size:13px}}
+
     /* Refined visual layer: cleaner editorial layout, more depth, and clearer mobile hierarchy */
     :root{--navy:#092b4b;--blue:#1677bd;--sky:#edf7ff;--yellow:#ffd44f;--ink:#10263b;--muted:#65788b;--line:#e3edf5;--shadow:0 24px 70px rgba(9,43,75,.13)}
     body{font-size:15px;letter-spacing:-.12px}
@@ -86,7 +114,7 @@
   <div class="topbar"><div class="container"><span>✨ <strong>Clean, It’s Your Choice.</strong> Perawatan bersih sesuai pilihanmu</span><span><strong>Mr Clean Laundry</strong> · Parepare</span></div></div>
   <header><nav class="container nav" aria-label="Navigasi utama">
     <a class="brand" href="#home" aria-label="Mr Clean Laundry"><img class="brand-logo" src="assets/mr-clean-logo.svg" alt="Mr Clean logo"></a>
-    <div class="navlinks"><a href="#layanan">Layanan</a><a href="#keunggulan">Keunggulan</a><a href="#cara">Cara Kerja</a><a href="#ulasan">Ulasan</a><a href="#faq">FAQ</a><a href="#kontak">Kontak</a></div>
+    <div class="navlinks"><a href="#layanan">Layanan</a><a href="#keunggulan">Keunggulan</a><a href="#cara">Cara Kerja</a><a href="#ulasan">Ulasan</a><a href="#faq">FAQ</a><a href="#kemitraan">Kemitraan</a><a href="#kontak">Kontak</a></div>
     <a class="btn btn-yellow contact-link" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Pesan via WhatsApp <span>↗</span></a>
   </nav></header>
   <main>
@@ -125,6 +153,23 @@
         <details><summary>Bagaimana cara mengetahui harga dan waktu pengerjaan?</summary><p>Harga dan estimasi dapat berbeda sesuai jenis layanan serta item. Kirim detail pesanan melalui WhatsApp agar tim kami bisa membantu memberikan informasi yang sesuai.</p></details>
         <details><summary>Di mana lokasi outlet Mr Clean?</summary><p>Mr Clean Laundry berada di Jl. Kesuma No. 1, Parepare. Untuk perawatan sepatu dan helm, Mr Clean Shoes berlokasi di Jl. Pakis, Kota Malang.</p></details>
       </div>
+    </div></section>
+
+    <section class="partnership" id="kemitraan"><div class="container">
+      <div class="section-head"><span class="kicker">Grow with Mr Clean</span><h2>Peluang Kemitraan Mr Clean Laundry</h2><p>Bangun bisnis laundry bersama Mr Clean.</p><p class="partnership-lead">Bergabunglah bersama Mr Clean Laundry untuk mengembangkan bisnis laundry dengan dukungan sistem operasional, standar pelayanan, dan identitas brand yang konsisten. Cocok bagi calon pengusaha yang ingin memulai bisnis maupun pemilik usaha yang ingin mengembangkan jaringan outlet.</p></div>
+      <div class="partner-grid">
+        <article class="partner-card"><span class="partner-label">Paket Starter</span><h3>Mulai Rp80 Jutaan</h3><p>Pilihan awal untuk memulai bisnis laundry dengan investasi lebih terjangkau.</p><ul><li>Cocok untuk calon mitra pemula</li><li>Rincian fasilitas dikonfirmasi bersama tim</li></ul><a class="btn btn-outline partner-btn" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Tanyakan Paket ↗</a></article>
+        <article class="partner-card partner-featured"><span class="partner-label">Paket Growth</span><h3>Rp100 Jutaan</h3><p>Untuk mitra yang ingin mengembangkan outlet dengan cakupan fasilitas lebih lengkap.</p><ul><li>Detail peralatan dikonfirmasi bersama tim</li><li>Dukungan operasional dan fasilitas dibahas sesuai kebutuhan</li></ul><a class="btn btn-yellow partner-btn" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Tanyakan Paket ↗</a></article>
+        <article class="partner-card"><span class="partner-label">Paket Premium</span><h3>Rp120 Jutaan</h3><p>Untuk mitra yang menginginkan pengembangan outlet dengan cakupan fasilitas lebih luas.</p><ul><li>Detail paket dikonfirmasi bersama tim</li><li>Dukungan yang tersedia dibahas saat konsultasi</li></ul><a class="btn btn-outline partner-btn" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Tanyakan Paket ↗</a></article>
+      </div>
+      <p class="partner-note">Harga dan isi paket merupakan gambaran awal. Fasilitas, peralatan, serta cakupan dukungan perlu dikonfirmasi langsung kepada tim Mr Clean Laundry. Tidak ada estimasi keuntungan atau jaminan pendapatan yang dicantumkan.</p>
+      <div class="partner-support"><div class="partner-support-head"><span class="kicker">Rencana dukungan kemitraan</span><h3>Dukungan untuk memulai dan mengembangkan outlet</h3><p>Poin berikut merupakan rencana dukungan yang perlu dikonfirmasi dan disepakati bersama tim Mr Clean.</p></div><div class="partner-benefits">
+        <article><span class="partner-icon">✦</span><div><h4>Brand &amp; Identitas Usaha</h4><p>Penggunaan identitas brand Mr Clean sesuai kesepakatan kemitraan.</p></div></article>
+        <article><span class="partner-icon">↗</span><div><h4>Panduan Operasional</h4><p>Panduan untuk membantu mitra menjalankan kegiatan operasional.</p></div></article>
+        <article><span class="partner-icon">＋</span><div><h4>Konsultasi Pembukaan Outlet</h4><p>Diskusi awal mengenai persiapan dan kebutuhan outlet.</p></div></article>
+        <article><span class="partner-icon">✓</span><div><h4>Standar Pelayanan</h4><p>Panduan pelayanan pelanggan untuk menjaga konsistensi kualitas.</p></div></article>
+      </div></div>
+      <div class="partner-cta"><div><h3>Tertarik menjadi mitra Mr Clean?</h3><p>Ingin mengetahui detail investasi dan peluang kemitraan? Hubungi tim kami untuk mendapatkan informasi paket yang sesuai dengan rencana bisnis Anda.</p></div><a class="btn btn-yellow" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Konsultasi Kemitraan via WhatsApp ↗</a></div>
     </div></section>
     <div class="cta-wrap" id="kontak"><div class="container"><div class="cta"><div><h2>Ready for a fresher routine?</h2><p>Hubungi Mr Clean Laundry untuk tanya layanan, harga, dan jadwal antar-jemput.</p></div><a class="btn btn-yellow contact-link" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Chat via WhatsApp <span>↗</span></a></div></div></div>
   </main>
