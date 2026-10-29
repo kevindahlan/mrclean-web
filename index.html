@@ -14,12 +14,12 @@
     :root{--navy:#082c52;--blue:#1267a5;--sky:#eaf5ff;--yellow:#ffd34e;--ink:#10243a;--muted:#63758a;--white:#fff;--line:#e2ebf3;--shadow:0 20px 55px rgba(8,44,82,.12)}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:"DM Sans",sans-serif;background:#fff}a{color:inherit;text-decoration:none}button{font:inherit}.container{width:min(1160px,calc(100% - 40px));margin:auto}
     /* Home combines the core sections; secondary menu items open as separate views */
-    main>section{display:none;min-height:58vh}
-    main>section.core-section{display:block}
-    main>section.page-active{display:block;animation:pageReveal .24s ease-out}
-    main>section.core-section.page-active{display:block}
-    .cta-wrap.page-active{display:block;animation:pageReveal .24s ease-out}
-    .cta-wrap{display:none}
+    main>section{display:block;min-height:58vh}body.js-ready main>section{display:none}
+    body.js-ready main>section.core-section{display:block}
+    body.js-ready main>section.page-active{display:block;animation:pageReveal .24s ease-out}
+    body.js-ready main>section.core-section.page-active{display:block}
+    body.js-ready .cta-wrap.page-active{display:block;animation:pageReveal .24s ease-out}
+    .cta-wrap{display:block}body.js-ready .cta-wrap{display:none}
     @keyframes pageReveal{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
     .navlinks a[aria-current="page"]{color:var(--blue)}
     .topbar{background:var(--navy);color:#dcecff;font-size:12px;padding:10px 0}.topbar .container{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.topbar strong{color:var(--yellow)}
@@ -193,7 +193,7 @@
     </div></section>
     <div class="cta-wrap" id="kontak"><div class="container"><div class="cta"><div><h2>Ready for a fresher routine?</h2><p>Hubungi Mr Clean Laundry untuk tanya layanan, harga, dan jadwal antar-jemput.</p></div><a class="btn btn-yellow contact-link" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Chat via WhatsApp <span>↗</span></a></div></div></div>
   </main>
-  <footer id="kontak"><div class="container"><div class="footer-grid"><div><a class="brand footer-brand" href="#home" aria-label="Mr Clean Laundry"><img class="brand-logo" src="assets/mr-clean-logo.svg" alt="Mr Clean logo"></a><p class="footer-copy">Clean, It’s Your Choice. Solusi perawatan pakaian, sepatu, dan helm yang bisa kamu pilih sesuai kebutuhan.</p></div><div><div class="footer-title">Jelajahi</div><div class="footer-links"><a href="#layanan">Layanan</a><a href="#keunggulan">Keunggulan</a><a href="#cara">Cara Kerja</a><a href="#ulasan">Ulasan Google Maps</a><a href="#faq">FAQ</a></div></div><div><div class="footer-title">Informasi Kontak</div><div class="footer-links"><a href="https://wa.me/6285143971798" target="_blank" rel="noopener">📱 WhatsApp: 0851-4397-1798 ↗</a><a href="mailto:mrclean.srvc@gmail.com">✉️ mrclean.srvc@gmail.com</a><span><strong>📍 Mr Clean Laundry</strong><br>Jl. Kesuma No. 1, Parepare</span><span><strong>📍 Mr Clean Shoes</strong><br>Jl. Pakis, Kota Malang</span><a href="https://www.instagram.com/mc_laundry.id" target="_blank" rel="noopener">📷 @mc_laundry.id ↗</a></div></div></div><div class="copyright"><span>© <span id="year"></span> Mr Clean Laundry. All rights reserved.</span><span>Made for a cleaner everyday.</span></div></div></footer>
+  <footer><div class="container"><div class="footer-grid"><div><a class="brand footer-brand" href="#home" aria-label="Mr Clean Laundry"><img class="brand-logo" src="assets/mr-clean-logo.svg" alt="Mr Clean logo"></a><p class="footer-copy">Clean, It’s Your Choice. Solusi perawatan pakaian, sepatu, dan helm yang bisa kamu pilih sesuai kebutuhan.</p></div><div><div class="footer-title">Jelajahi</div><div class="footer-links"><a href="#layanan">Layanan</a><a href="#keunggulan">Keunggulan</a><a href="#cara">Cara Kerja</a><a href="#ulasan">Ulasan Google Maps</a><a href="#faq">FAQ</a></div></div><div><div class="footer-title">Informasi Kontak</div><div class="footer-links"><a href="https://wa.me/6285143971798" target="_blank" rel="noopener">📱 WhatsApp: 0851-4397-1798 ↗</a><a href="mailto:mrclean.srvc@gmail.com">✉️ mrclean.srvc@gmail.com</a><span><strong>📍 Mr Clean Laundry</strong><br>Jl. Kesuma No. 1, Parepare</span><span><strong>📍 Mr Clean Shoes</strong><br>Jl. Pakis, Kota Malang</span><a href="https://www.instagram.com/mc_laundry.id" target="_blank" rel="noopener">📷 @mc_laundry.id ↗</a></div></div></div><div class="copyright"><span>© <span id="year"></span> Mr Clean Laundry. All rights reserved.</span><span>Made for a cleaner everyday.</span></div></div></footer>
   <div class="mobile-cta"><a class="btn btn-yellow" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Tanya & Pesan via WhatsApp ↗</a></div>
   <script>
     document.getElementById('year').textContent=new Date().getFullYear();
@@ -229,6 +229,7 @@
         e.preventDefault();showPage(id,true);
       });
       window.addEventListener('popstate',()=>showPage(location.hash.slice(1)||'home',false));
+      document.body.classList.add('js-ready');
       showPage(location.hash.slice(1)||'home',false);
     })();
   </script>
