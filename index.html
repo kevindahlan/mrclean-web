@@ -240,9 +240,35 @@
         const address=document.getElementById('pickupAddress').value.trim();
         if(!address){document.getElementById('pickupAddress').focus();return;}
         const kind=type.value;
-        const service=kind==='Pickup / Penjemputan'?'\\nLayanan: '+document.getElementById('pickupService').value:'';
-        const note=document.getElementById('pickupNote').value.trim()||'-';
-        const message='PESAN ANTAR-JEMPUT MR CLEAN\\n\\nJenis: '+kind+service+'\\nAlamat: '+address+'\\nTanggal: '+date.value+'\\nJam: '+document.getElementById('pickupTime').value+'\\nKeterangan: '+note;
+        const service=kind==='Pickup / Penjemputan'?document.getElementById('pickupService').value:'';
+        const note=document.getElementById('pickupNote').value.trim()||'Tidak ada';
+        const dateValue=date.value ? new Date(date.value+'T00:00:00').toLocaleDateString('id-ID',{day:'2-digit',month:'long',year:'numeric'}) : '-';
+        const timeValue=document.getElementById('pickupTime').value || '-';
+        const lines=[
+          '🧺 *PESANAN ANTAR-JEMPUT MR CLEAN*',
+          '━━━━━━━━━━━━━━━━━━',
+          '',
+          '📌 *JENIS PERMINTAAN*',
+          kind,
+          ...(service ? ['', '🧼 *JENIS LAYANAN*', service] : []),
+          '',
+          '📍 *ALAMAT*',
+          address,
+          '',
+          '📅 *TANGGAL*',
+          dateValue,
+          '',
+          '⏰ *WAKTU*',
+          timeValue,
+          '',
+          '📝 *CATATAN*',
+          note,
+          '',
+          '━━━━━━━━━━━━━━━━━━',
+          'Mohon konfirmasi pesanan ini.',
+          'Terima kasih 🙏'
+        ];
+        const message=lines.join('\\n');
         window.open('https://wa.me/6285188231302?text='+encodeURIComponent(message),'_blank','noopener');
       });
     })();
