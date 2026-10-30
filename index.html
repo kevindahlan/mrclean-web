@@ -39,7 +39,17 @@
     footer{background:#061f3a;color:#d0dfec;padding:48px 0 22px}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:35px;padding-bottom:35px}.footer-brand{color:white}.footer-copy{font-size:12px;line-height:1.8;color:#a8bfd4;max-width:320px;margin-top:17px}.footer-title{font:800 12px Manrope,sans-serif;color:white;margin-bottom:16px}.footer-links{display:grid;gap:12px;font-size:12px;color:#b6cadc}.footer-links a:hover{color:var(--yellow)}.copyright{border-top:1px solid #ffffff20;padding-top:20px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:10px;color:#8da8c0}.mobile-cta{display:none}
     @media(max-width:850px){.navlinks{display:none}.hero{padding:54px 0}.hero-grid{grid-template-columns:1fr;gap:25px}.hero h1{letter-spacing:-2px}.hero-art{min-height:360px}.art-main{height:330px}.float-one{left:0}.float-two{right:0}.service-grid{grid-template-columns:repeat(2,1fr)}.promise-grid{grid-template-columns:1fr;gap:30px}.promise-visual{min-height:320px}.cta{padding:35px;align-items:flex-start;flex-direction:column}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}}
     @media(max-width:560px){.container{width:min(100% - 30px,1160px)}.topbar .container{justify-content:center;text-align:center}.nav{height:68px}.nav .btn{padding:11px 13px;font-size:11px}.brand{font-size:14px}.brand-logo{width:125px;max-height:42px}.hero h1{font-size:43px}.hero p{font-size:14px}.hero-art{min-height:310px}.art-main{height:285px;border-radius:24px}.float-one{top:5px}.float-two{bottom:4px}.floating-card{padding:10px 12px}.floating-card .ico{width:34px;height:34px;font-size:18px}.floating-card strong{font-size:11px}.floating-card small{font-size:9px}.stats{grid-template-columns:1fr;gap:17px}.stat{justify-content:flex-start;padding-left:18%}.service-grid,.step-grid{grid-template-columns:1fr}.service-card{padding:23px}section{padding:66px 0}.promise-visual{min-height:270px}.cta{padding:28px 23px}.cta .btn{width:100%}.footer-grid{grid-template-columns:1fr;gap:28px}.footer-grid>div:first-child{grid-column:auto}.copyright{flex-direction:column}.mobile-cta{display:flex;position:fixed;z-index:20;bottom:12px;left:12px;right:12px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:17px;box-shadow:0 10px 40px #082c5230}.mobile-cta .btn{width:100%}footer{padding-bottom:100px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+    .pickup-section{background:#f7fbff}
+    .pickup-form{max-width:720px;margin:0 auto;padding:30px;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .pickup-field{display:grid;gap:8px;min-width:0}.pickup-full{grid-column:1/-1}
+    .pickup-field label{font-size:13px;font-weight:700;color:var(--navy)}
+    .pickup-field input,.pickup-field select,.pickup-field textarea{width:100%;font:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid #cddce9;border-radius:12px;padding:13px 14px;outline:none}
+    .pickup-field input:focus,.pickup-field select:focus,.pickup-field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1267a51a}
+    .pickup-field textarea{resize:vertical}.pickup-submit{width:100%;font-size:14px}
+    .pickup-help{font-size:11px;line-height:1.6;color:var(--muted);text-align:center;margin:0}
+    @media(max-width:560px){.pickup-form{padding:20px;grid-template-columns:1fr;gap:15px}.pickup-full{grid-column:auto}}
+\n    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 
     .partnership{background:linear-gradient(180deg,#f5faff 0%,#fff 100%)}
     .partnership .section-head>p:first-of-type{font:700 19px Manrope,sans-serif;color:var(--navy);margin:12px 0}
@@ -140,7 +150,7 @@
   <div class="topbar"><div class="container"><span>✨ <strong>Clean, It’s Your Choice.</strong> Perawatan bersih sesuai pilihanmu</span><span><strong>Mr Clean Laundry</strong> · Parepare</span></div></div>
   <header><nav class="container nav" aria-label="Navigasi utama">
     <a class="brand" href="#home" aria-label="Mr Clean Laundry"><img class="brand-logo" src="assets/mr-clean-logo.svg" alt="Mr Clean logo"></a>
-    <div class="navlinks"><a href="#layanan">Layanan</a><a href="#keunggulan">Keunggulan</a><a href="#cara">Cara Kerja</a><a href="#ulasan">Ulasan</a><a href="#faq">FAQ</a><a href="#kemitraan">Kemitraan</a><a href="#kontak">Kontak</a></div>
+    <div class="navlinks"><a href="#layanan">Layanan</a><a href="#keunggulan">Keunggulan</a><a href="#cara">Cara Kerja</a><a href="#antar-jemput">Antar-Jemput</a><a href="#ulasan">Ulasan</a><a href="#faq">FAQ</a><a href="#kemitraan">Kemitraan</a><a href="#kontak">Kontak</a></div>
     <a class="btn btn-yellow contact-link" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Pesan via WhatsApp <span>↗</span></a>
   </nav></header>
   <main>
@@ -167,7 +177,19 @@
         <article class="service-card"><div class="service-icon">🚲</div><h3>Antar-Jemput</h3><p>Lebih praktis dengan layanan antar-jemput laundry gratis. Hubungi kami untuk mengatur pesanan dan area layanan.</p><a class="text-link contact-link" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Atur penjemputan <span>→</span></a></article>
       </div>
     </div></section>
-    <section id="keunggulan"><div class="container promise-grid"><div class="promise-visual"><img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=1000&q=85" alt="Pakaian tertata rapi setelah dicuci" loading="lazy" onerror="this.style.display='none'"></div><div class="promise-copy"><span class="kicker">Why Mr Clean</span><h2>Perawatan yang bikin hidup lebih simpel.</h2><p>Kami ingin pengalaman laundry terasa mudah dan jelas dari awal sampai pakaian kembali ke tanganmu.</p><ul class="check-list"><li><span class="check">✓</span><span><strong>Pilihan layanan yang fleksibel</strong><br>Kiloan, satuan, dry clean, hingga perawatan sepatu dan helm.</span></li><li><span class="check">✓</span><span><strong>Garansi cuci ulang</strong><br>Jika hasil belum sesuai ketentuan layanan, silakan hubungi tim kami.</span></li><li><span class="check">✓</span><span><strong>Antar-jemput laundry gratis</strong><br>Hubungi kami untuk konfirmasi area dan jadwal penjemputan.</span></li><li><span class="check">✓</span><span><strong>Komunikasi yang mudah</strong><br>Tanyakan layanan dan kebutuhan pesanan sebelum datang.</span></li></ul><a class="btn btn-blue contact-link" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Hubungi via WhatsApp <span>↗</span></a></div></div></section>
+
+    <section class="pickup-section" id="antar-jemput"><div class="container"><div class="section-head"><span class="kicker">Pickup & delivery</span><h2>Pesan Antar-Jemput</h2><p>Isi detail penjemputan atau pengantaran. Pesan akan disiapkan otomatis melalui WhatsApp kurir kami.</p></div>
+      <form class="pickup-form" id="pickupForm">
+        <div class="pickup-field pickup-full"><label for="pickupType">Jenis permintaan</label><select id="pickupType" name="pickupType" required><option value="Pickup / Penjemputan">Pickup / Penjemputan</option><option value="Delivery / Pengantaran">Delivery / Pengantaran</option></select></div>
+        <div class="pickup-field pickup-full" id="serviceField"><label for="pickupService">Jenis layanan</label><select id="pickupService" name="pickupService"><option>Laundry Kiloan</option><option>Laundry Satuan</option><option>Dry Clean</option><option>Cuci Sepatu</option><option>Cuci Helm</option></select></div>
+        <div class="pickup-field pickup-full"><label for="pickupAddress">Alamat penjemputan / pengantaran</label><textarea id="pickupAddress" name="pickupAddress" rows="3" placeholder="Masukkan alamat lengkap dan patokan lokasi" required></textarea></div>
+        <div class="pickup-field"><label for="pickupDate">Tanggal</label><input id="pickupDate" name="pickupDate" type="date" required></div>
+        <div class="pickup-field"><label for="pickupTime">Jam</label><input id="pickupTime" name="pickupTime" type="time" required></div>
+        <div class="pickup-field pickup-full"><label for="pickupNote">Keterangan / tambahan (opsional)</label><textarea id="pickupNote" name="pickupNote" rows="2" placeholder="Contoh: jumlah laundry, patokan rumah, atau instruksi tambahan"></textarea></div>
+        <div class="pickup-field pickup-full"><button class="btn btn-yellow pickup-submit" type="submit">Kirim Permintaan ke WhatsApp Kurir ↗</button><p class="pickup-help">WhatsApp kurir akan terbuka dengan pesan yang sudah terisi. Silakan tekan tombol Kirim di WhatsApp untuk mengirim permintaan.</p></div>
+      </form>
+    </div></section>
+\n    <section id="keunggulan"><div class="container promise-grid"><div class="promise-visual"><img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=1000&q=85" alt="Pakaian tertata rapi setelah dicuci" loading="lazy" onerror="this.style.display='none'"></div><div class="promise-copy"><span class="kicker">Why Mr Clean</span><h2>Perawatan yang bikin hidup lebih simpel.</h2><p>Kami ingin pengalaman laundry terasa mudah dan jelas dari awal sampai pakaian kembali ke tanganmu.</p><ul class="check-list"><li><span class="check">✓</span><span><strong>Pilihan layanan yang fleksibel</strong><br>Kiloan, satuan, dry clean, hingga perawatan sepatu dan helm.</span></li><li><span class="check">✓</span><span><strong>Garansi cuci ulang</strong><br>Jika hasil belum sesuai ketentuan layanan, silakan hubungi tim kami.</span></li><li><span class="check">✓</span><span><strong>Antar-jemput laundry gratis</strong><br>Hubungi kami untuk konfirmasi area dan jadwal penjemputan.</span></li><li><span class="check">✓</span><span><strong>Komunikasi yang mudah</strong><br>Tanyakan layanan dan kebutuhan pesanan sebelum datang.</span></li></ul><a class="btn btn-blue contact-link" href="https://wa.me/6285143971798" target="_blank" rel="noopener">Hubungi via WhatsApp <span>↗</span></a></div></div></section>
     <section class="reviews" id="ulasan"><div class="container"><div class="section-head"><span class="kicker">Customer reviews</span><h2>Dipercaya pelanggan kami.</h2><p>Pengalaman pelanggan menjadi bagian penting dari komitmen kami untuk terus memberikan layanan yang bersih, rapi, dan responsif.</p></div><div class="review-summary"><div class="review-score">5,0/5</div><div><div class="review-stars" aria-label="Rating bintang lima">★★★★★</div><div class="review-count">44 ulasan di Google Maps · data dapat berubah</div></div></div><div class="review-grid"><article class="review-card"><div class="review-stars" aria-label="Rating bintang lima">★★★★★</div><p>“Tempatnya bersih, baju harum dan bagus kerjanya cepat dan rapi.”</p><div class="review-author">Agus Salim</div><div class="review-source">Ulasan Google Maps</div></article><article class="review-card"><div class="review-stars" aria-label="Rating bintang lima">★★★★★</div><p>“Pelayanannya bagus, customer service-nya sigap melayani komplain.”</p><div class="review-author">Fachriiell Official</div><div class="review-source">Ulasan Google Maps</div></article></div><div class="review-action"><a class="btn btn-blue" href="https://share.google/5itUhwz6iWNsC4Tfb" target="_blank" rel="noopener noreferrer">Lihat Semua Ulasan di Google Maps <span>↗</span></a></div></div></section>
     <section class="steps" id="cara"><div class="container"><div class="section-head"><span class="kicker">Simple process</span><h2>Semudah 1, 2, 3.</h2><p>Mulai dari konsultasi sampai cucian siap digunakan lagi.</p></div><div class="step-grid"><article class="step"><div class="step-num">01</div><h3>Hubungi kami</h3><p>Ceritakan kebutuhanmu dan pilih layanan yang sesuai.</p></article><article class="step"><div class="step-num">02</div><h3>Serahkan cucian</h3><p>Antarkan ke outlet atau tanyakan opsi antar-jemput yang tersedia.</p></article><article class="step"><div class="step-num">03</div><h3>Nikmati hasilnya</h3><p>Ambil pesanan sesuai informasi waktu yang diberikan oleh tim kami.</p></article></div></div></section>
 
@@ -204,8 +226,29 @@
   <script>
     document.getElementById('year').textContent=new Date().getFullYear();
     (function(){
+      const type=document.getElementById('pickupType');
+      const serviceField=document.getElementById('serviceField');
+      const date=document.getElementById('pickupDate');
+      const today=new Date();
+      const localToday=new Date(today.getTime()-today.getTimezoneOffset()*60000).toISOString().slice(0,10);
+      date.min=localToday;
+      date.value=localToday;
+      function toggleService(){serviceField.hidden=type.value!=='Pickup / Penjemputan';}
+      type.addEventListener('change',toggleService);toggleService();
+      document.getElementById('pickupForm').addEventListener('submit',function(e){
+        e.preventDefault();
+        const address=document.getElementById('pickupAddress').value.trim();
+        if(!address){document.getElementById('pickupAddress').focus();return;}
+        const kind=type.value;
+        const service=kind==='Pickup / Penjemputan'?'\\nLayanan: '+document.getElementById('pickupService').value:'';
+        const note=document.getElementById('pickupNote').value.trim()||'-';
+        const message='PESAN ANTAR-JEMPUT MR CLEAN\\n\\nJenis: '+kind+service+'\\nAlamat: '+address+'\\nTanggal: '+date.value+'\\nJam: '+document.getElementById('pickupTime').value+'\\nKeterangan: '+note;
+        window.open('https://wa.me/6285188231302?text='+encodeURIComponent(message),'_blank','noopener');
+      });
+    })();
+    (function(){
       const coreIds=['home','layanan','keunggulan','cara'];
-      const separateIds=['ulasan','faq','kemitraan'];
+      const separateIds=['antar-jemput','ulasan','faq','kemitraan'];
       const allIds=coreIds.concat(separateIds);
       const sections=allIds.map(id=>document.getElementById(id)).filter(Boolean);
       const contactView=document.querySelector('.cta-wrap');
